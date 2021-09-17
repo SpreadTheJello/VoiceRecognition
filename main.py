@@ -9,7 +9,10 @@ mappings = {
 }
 
 assistant = GenericAssistant('command_intents.json', intent_methods=mappings)
-assistant.train_model()
+#assistant.train_model()
+#assistant.save_model()
+
+assistant.load_model()
 
 for index, name in enumerate(sr.Microphone.list_microphone_names()):
         if "pulse" in name:
