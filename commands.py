@@ -34,6 +34,7 @@ def open_youtube_newtab():
     keyboard.press('t')
     keyboard.release(Key.cmd)
     keyboard.release('t')
+    time.sleep(0.05)
     open_youtube()
     print("--opened youtube in new tab--")
     
