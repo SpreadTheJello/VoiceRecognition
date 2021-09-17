@@ -5,6 +5,12 @@
      "responses": [""]},
     {"tag": "play_pause",
      "patterns": ["Pause Video", "Play Video", "Unpause", "Play", "Pause", "Continue Video", "Stop Video"],
+     "responses": [""]},
+    {"tag": "newtab",
+     "patterns": ["New Tab", "Open new browsing tab", "open new tab"],
+     "responses": [""]},
+    {"tag": "open_youtube_newtab",
+     "patterns": ["Open Youtube in a new tab", "Youtube in a new tab", "open a tab with youtube"],
      "responses": [""]}
      
 ]}

@@ -5,13 +5,14 @@ from neuralintents import GenericAssistant
 channel = 13
 mappings = {
     "open_youtube": cmd.open_youtube,
-    "play_pause": cmd.play
+    "play_pause": cmd.play_pause,
+    "newtab": cmd.newtab,
+    "open_youtube_newtab": cmd.open_youtube_newtab
 }
 
 assistant = GenericAssistant('command_intents.json', intent_methods=mappings)
 #assistant.train_model()
 #assistant.save_model()
-
 assistant.load_model()
 
 for index, name in enumerate(sr.Microphone.list_microphone_names()):
