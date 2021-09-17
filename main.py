@@ -9,7 +9,10 @@ mappings = {
     "newtab": cmd.newtab,
     "open_youtube_newtab": cmd.open_youtube_newtab,
     "homepage_random_video": cmd.homepage_random_video,
-    "next_video": cmd.next_video
+    "next_video": cmd.next_video,
+    "homepage": cmd.homepage,
+    "back_button": cmd.back_button,
+    "forward_button": cmd.forward_button
 }
 
 assistant = GenericAssistant('command_intents.json', intent_methods=mappings)
@@ -25,7 +28,7 @@ for index, name in enumerate(sr.Microphone.list_microphone_names()):
 
         with sr.Microphone(device_index=channel) as mic:
             r.adjust_for_ambient_noise(mic)
-            print("Listening...")
+            print("\nListening...")
             audio = r.listen(mic, phrase_time_limit=4)
 
         try:

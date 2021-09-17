@@ -13,6 +13,7 @@ def click():
 def open_youtube():
     mouse.position = (40, 115)
     click()
+    mouse.position = (10, 145)
     print("--opened youtube--")
 
 def play_pause():
@@ -33,8 +34,7 @@ def open_youtube_newtab():
     keyboard.press('t')
     keyboard.release(Key.cmd)
     keyboard.release('t')
-    mouse.position = (40, 115)
-    click()
+    open_youtube()
     print("--opened youtube in new tab--")
     
 def homepage_random_video():
@@ -51,3 +51,20 @@ def next_video():
     mouse.position = (76, 915)
     print("--played next video--")
 
+def homepage():
+    mouse.position = (85, 162)
+    click()
+    mouse.position = (10, 145)
+    print("--went to homepage--")
+
+def back_button():
+    mouse.position = (20, 80)
+    click()
+    mouse.position = (10, 145)
+    print("--back button pressed--")
+
+def forward_button():
+    mouse.position = (55, 80)
+    click()
+    mouse.position = (10, 145)
+    print("--front button pressed--")

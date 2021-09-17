@@ -17,6 +17,15 @@
      "responses": [""]},
     {"tag": "next_video",
      "patterns": ["skip video", "play what's next", "play whats up next", "skip this video", "next video"],
-     "responses": [""]}
-     
+     "responses": [""]},
+    {"tag": "homepage",
+     "patterns": ["go to homepage", "homepage", "refresh the homepage", "refresh videos", "give me new videos", "home"],
+     "responses": [""]},
+    {"tag": "back_button",
+     "patterns": ["click back", "back button", "go back", "back a page", "previous page"],
+     "responses": [""]},
+    {"tag": "forward",
+     "patterns": ["click forward", "forward button", "go forward", "forward a page", "next page", "front button"],
+     "responses": [""]} 
+
 ]}
