@@ -1,0 +1,10 @@
+{"intents":
+[
+    {"tag": "open_youtube",
+     "patterns": ["Open Youtube", "Open up Youtube", "Open Youtube again", "Open Youtube Application"],
+     "responses": [""]},
+    {"tag": "play_pause",
+     "patterns": ["Pause Video", "Play Video", "Unpause", "Play", "Pause", "Continue Video", "Stop Video"],
+     "responses": [""]}
+     
+]}

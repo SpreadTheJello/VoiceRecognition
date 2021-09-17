@@ -1,33 +1,35 @@
 import speech_recognition as sr
-from selenium import webdriver
-import time
+import commands as cmd
+from neuralintents import GenericAssistant
 
-PATH = "/Users/mrjello/Downloads/chromedriver"
-USERPATH = "--user-data-dir=/Users/mrjello/Desktop/CSE-Projects/VoiceAssistance/UserData"
+channel = 13
+mappings = {
+    "open_youtube": cmd.open_youtube,
+    "play_pause": cmd.play
+}
 
-op = webdriver.ChromeOptions()
-op.add_argument(USERPATH)
-#op.add_argument('--headless')
-op.add_experimental_option("excludeSwitches", ["enable-automation"])
-op.add_experimental_option('useAutomationExtension', False)
-op.page_load_strategy = 'normal'
+assistant = GenericAssistant('command_intents.json', intent_methods=mappings)
+assistant.train_model()
 
-recognizer = sr.Recognizer()
+for index, name in enumerate(sr.Microphone.list_microphone_names()):
+        if "pulse" in name:
+            channel = index
 
-while True:
-    try:
-        with sr.Microphone() as mic:
-            recognizer.adjust_for_ambient_noise(mic, duration=0.2)
-            audio = recognizer.listen(mic)
-            text = recognizer.recognize_google(audio)
-            text = text.lower()
-            print(text)
+        r = sr.Recognizer()
 
-            if(text == "open youtube"):
-                driver = webdriver.Chrome(PATH, options=op)
-                driver.get('https://www.youtube.com/')
-                time.sleep(5)
+        with sr.Microphone(device_index=channel) as mic:
+            r.adjust_for_ambient_noise(mic)
+            print("Listening...")
+            audio = r.listen(mic, phrase_time_limit=4)
 
-    except sr.UnknownValueError():
-        recognizer = sr.Recognizer()
-        continue
+        try:
+            input = r.recognize_google(audio)
+            input = input.lower()
+            assistant.request(input)
+            print("You said: " + input)
+            #cmd.run(input)
+
+        except sr.UnknownValueError:
+            print("Google Speech Recognition could not understand audio")
+        except sr.RequestError as e:
+            print("Could not request results from Google Speech Recognition service; {0}".format(e))
