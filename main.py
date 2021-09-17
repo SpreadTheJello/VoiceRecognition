@@ -7,7 +7,9 @@ mappings = {
     "open_youtube": cmd.open_youtube,
     "play_pause": cmd.play_pause,
     "newtab": cmd.newtab,
-    "open_youtube_newtab": cmd.open_youtube_newtab
+    "open_youtube_newtab": cmd.open_youtube_newtab,
+    "homepage_random_video": cmd.homepage_random_video,
+    "next_video": cmd.next_video
 }
 
 assistant = GenericAssistant('command_intents.json', intent_methods=mappings)

@@ -2,7 +2,7 @@
 [
     {"tag": "open_youtube",
      "patterns": ["Open Youtube", "Open up Youtube", "Open Youtube again", "Open Youtube Application"],
-     "responses": [""]},
+     "responses": ["done, from responses"]},
     {"tag": "play_pause",
      "patterns": ["Pause Video", "Play Video", "Unpause", "Play", "Pause", "Continue Video", "Stop Video"],
      "responses": [""]},
@@ -11,6 +11,12 @@
      "responses": [""]},
     {"tag": "open_youtube_newtab",
      "patterns": ["Open Youtube in a new tab", "Youtube in a new tab", "open a tab with youtube"],
+     "responses": [""]},
+    {"tag": "homepage_random_video",
+     "patterns": ["play random video", "click on a random video", "from the homepage click a video", "play video on the homepage", "watch a video on homepage", "watch a random video"],
+     "responses": [""]},
+    {"tag": "next_video",
+     "patterns": ["skip video", "play what's next", "play whats up next", "skip this video", "next video"],
      "responses": [""]}
      
 ]}
