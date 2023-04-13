@@ -1,44 +1,55 @@
 import speech_recognition as sr
 import commands as cmd
 from neuralintents import GenericAssistant
+from selenium import webdriver
 
-channel = 13
+driver_path = "/path/to/chromedriver"
+
+
+browser = webdriver.Chrome(driver_path)
+
 mappings = {
-    "open_youtube": cmd.open_youtube,
-    "play_pause": cmd.play_pause,
-    "newtab": cmd.newtab,
-    "open_youtube_newtab": cmd.open_youtube_newtab,
-    "homepage_random_video": cmd.homepage_random_video,
-    "next_video": cmd.next_video,
-    "homepage": cmd.homepage,
-    "back_button": cmd.back_button,
-    "forward_button": cmd.forward_button
+    "open_youtube": cmd.open_youtube(browser),
+    "play_pause": cmd.play_pause(browser),
+    "homepage_random_video": cmd.homepage_random_video(browser),
+    "next_video": cmd.next_video(browser),
+    "homepage": cmd.homepage(browser),
+    "back_button": cmd.back_button(browser),
+    "forward_button": cmd.forward_button(browser),
+    "mute_video": cmd.mute_video(browser)
 }
 
 assistant = GenericAssistant('command_intents.json', intent_methods=mappings)
-#assistant.train_model()
-#assistant.save_model()
+# assistant.train_model()
+# assistant.save_model()
 assistant.load_model()
 
-for index, name in enumerate(sr.Microphone.list_microphone_names()):
-        if "pulse" in name:
-            channel = index
+# use microphone 1 as the audio source
 
-        r = sr.Recognizer()
+# print("Available microphones:")
+# for index, name in enumerate(sr.Microphone.list_microphone_names()):
+#     print(f"Index: {index}, Name: {name}")
 
-        with sr.Microphone(device_index=channel) as mic:
-            r.adjust_for_ambient_noise(mic)
-            print("\nListening...")
-            audio = r.listen(mic, phrase_time_limit=4)
+# channel = int(input("Enter the index of the desired microphone: "))
 
-        try:
-            input = r.recognize_google(audio)
-            input = input.lower()
-            assistant.request(input)
+r = sr.Recognizer()
+
+while True:
+    with sr.Microphone(device_index=1) as mic:
+        r.adjust_for_ambient_noise(mic)
+        print("\nListening...")
+        audio = r.listen(mic, phrase_time_limit=4)
+
+    try:
+        input = r.recognize_google(audio)
+        input = input.lower()
+        response = assistant.request(input)
+        if response != "I don't know how to handle that command":
             print("You said: " + input)
-            #cmd.run(input)
+        else:
+            print("Command not recognized")
 
-        except sr.UnknownValueError:
-            print("Google Speech Recognition could not understand audio")
-        except sr.RequestError as e:
-            print("Could not request results from Google Speech Recognition service; {0}".format(e))
+    except sr.UnknownValueError:
+        print("Google Speech Recognition could not understand audio")
+    except sr.RequestError as e:
+        print("Could not request results from Google Speech Recognition service; {0}".format(e))
