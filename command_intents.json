@@ -21,8 +21,16 @@
     {"tag": "forward_button",
      "patterns": ["click forward", "forward button", "go forward", "forward a page", "next page", "front button"],
      "responses": [""]} ,
-     {"tag": "mute_video",
-     "patterns": ["mute video", "mute", "turn off sound", "unmute", "turn on sound", "unmute video"],
-     "responses": [""]} 
-
+    {"tag": "mute_video",
+    "patterns": ["mute video", "mute", "turn off sound", "unmute", "turn on sound", "unmute video"],
+    "responses": [""]},
+    {"tag": "fullscreen",
+    "patterns": ["fullscreen video", "full screen", "unfullscreen", "un full screen", "un full screen video", "unfullscreen video", "make video fullscreen", "make video full screen"],
+    "responses": [""]},
+    {"tag": "theater_mode",
+    "patterns": ["enter theatre mode", "enter theater mode", "theatre mode", "theater mode", "exit theatre mode", "exit theater mode", "exit theatre mode", "exit theater mode"],
+    "responses": [""]},
+    {"tag": "stop_listening",
+    "patterns": ["stop listening", "stop program", "shut down"],
+    "responses": [""]}
 ]}

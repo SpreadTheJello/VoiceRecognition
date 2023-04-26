@@ -68,6 +68,12 @@ def next_video(browser):
         print("--played next video--")
     return _next_video
 
+# Function to stop listening
+def stop_listening():
+    def _stop_listening():
+        print("--stopped listening--")
+    return _stop_listening
+
 # Function to mute or unmute the current video
 def mute_video(browser):
     def _mute_video():
@@ -76,6 +82,22 @@ def mute_video(browser):
         print("--muted/unmuted video--")
     return _mute_video
 
+# Function to enter fullscreen mode
+def fullscreen(browser):
+    def _fullscreen():
+        body = browser.find_element(By.TAG_NAME, 'body')
+        body.send_keys('f')
+        print("--fullscreen button--")
+    return _fullscreen
+
+# Function to enter theatre mode
+def theater_mode(browser):
+    def _theater_mode():
+        body = browser.find_element(By.TAG_NAME, 'body')
+        body.send_keys('t')
+        print("--theatre mode button--")
+    return _theater_mode
+
 # Function to navigate to the YouTube homepage
 def homepage(browser):
     def _homepage():
@@ -83,6 +105,17 @@ def homepage(browser):
         open_youtube_func()
         print("--went to homepage--")
     return _homepage
+
+# function pick video from home page and play it example : "play video 1" or "play video 2" etc
+# def play_video(browser, video_number):
+#     def _play_video():
+#         open_youtube_func = open_youtube(browser)
+#         open_youtube_func()
+#         time.sleep(1)
+#         body = browser.find_element(By.TAG_NAME, 'body')
+#         body.send_keys(Keys.SHIFT + video_number)
+#         print("--played video--")
+#     return _play_video
 
 # Function to navigate back in the browser history
 def back_button(browser):
