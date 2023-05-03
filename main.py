@@ -71,6 +71,7 @@ class App(QMainWindow):
     def init_ui(self):
         # Set the window title and size
         self.setWindowTitle("YouTube Voice Control")
+        self.setFixedSize(400, 800)
         self.central_widget = QWidget(self)
         self.setCentralWidget(self.central_widget)
         layout = QVBoxLayout(self.central_widget)
@@ -109,9 +110,16 @@ class App(QMainWindow):
         self.commands_text.setReadOnly(True)
         for command, patterns in command_patterns.items():
             self.commands_text.appendPlainText(f"{patterns[0]}")
-
         layout.addWidget(self.commands_text)
 
+        # Description of the app
+        self.description = QLabel("About our App:")
+        layout.addWidget(self.description)
+        self.description_text = QPlainTextEdit()
+        self.description_text.setReadOnly(True)
+        self.description_text.appendPlainText("Greetings User! We are pleased that you are using YouTube Voice control! This app essentially allows you to control YouTube with your own voice. First off, its best to be using this app with a pair of wireless headphones or ear-buds for maximum efficiency of this app. As using this app with loud speakers may impact performance. Once you have your Headphone/ear-buds. Go ahead and click begin to start your app. So after the screen will minimize with a microphone Icon and some speech catch to let you know if you are being heard correctly.")
+        layout.addWidget(self.description_text)
+        
         # Connect the processing_signal to the update_processing_label function
         self.processing_signal.connect(self.update_processing_label)
         # Connect the console_output_signal to the update_console_output function
